@@ -20,19 +20,41 @@ TreeNode.prototype.insert = function(val) {
   return this;
 };
 
+TreeNode.prototype.bfs = function() {
+  let queue = [this];
+  let output = [];
+  while (queue.length) {
+    let node = queue.shift();
+    output.push(node.val);
+    if (node.left) {
+      queue.push(node.left);
+    }
+    if (node.right) {
+      queue.push(node.right);
+    }
+  }
+  return output;
+};
+
 if (require.main === module) {
   let start = 0;
   let end = 10;
   let node = new TreeNode(start);
   Array
     .from(new Array(end), (x, i) => i + 1)
-    .forEach((x, i) => {
-      node.insert(i);
+    .forEach((x) => {
+      node.insert(x);
     });
   console.log(`insert sequentially from ${start} to ${end}`);
   console.log(node);
   console.log('');
-  node = (new TreeNode(11)).insert(12).insert(13);
+
+  let node2 = (new TreeNode(11)).insert(12).insert(13);
   console.log('chainable insertion test');
-  console.log(node);
+  console.log(node2);
+  console.log('');
+
+  console.log('bfs test');
+  console.log(node.bfs());
+  console.log('');
 }
