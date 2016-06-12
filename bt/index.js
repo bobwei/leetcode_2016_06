@@ -21,6 +21,15 @@ export default class TreeNode {
     return this;
   }
 
+  static fromBFS(arr) {
+    const rootNode = new TreeNode(arr.shift());
+    return arr
+      .reduce(
+        (prev, current) => prev.insert(current),
+        rootNode
+      );
+  }
+
   bfs() {
     const queue = [this];
     const output = [];
@@ -32,6 +41,23 @@ export default class TreeNode {
       }
       if (node.right) {
         queue.push(node.right);
+      }
+    }
+    return output;
+  }
+
+  inOrder() {
+    const stack = [];
+    const output = [];
+    let current = this;
+    while (current || stack.length) {
+      if (current) {
+        stack.push(current);
+        current = current.left;
+      } else {
+        current = stack.pop();
+        output.push(current.val);
+        current = current.right;
       }
     }
     return output;
@@ -50,4 +76,6 @@ if (require.main === module) {
       new TreeNode(start)
     );
   console.log(rootNode.bfs());
+  console.log(rootNode.inOrder());
+  console.log(TreeNode.fromBFS(rootNode.bfs()).bfs());
 }
