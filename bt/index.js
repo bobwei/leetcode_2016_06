@@ -15,7 +15,32 @@ export default class TreeNode {
         node.right = new TreeNode(val);
         break;
       } else {
-        queue.push(node.left, node.right);
+        if (node.left.val !== null) {
+          queue.push(node.left);
+        }
+        if (node.right.val !== null) {
+          queue.push(node.right);
+        }
+      }
+    }
+    return this;
+  }
+
+  _removeNullNode() {
+    const queue = [this];
+    while (queue.length) {
+      const current = queue.shift();
+      if (current.left && current.left.val === null) {
+        current.left = null;
+      }
+      if (current.right && current.right.val === null) {
+        current.right = null;
+      }
+      if (current.left) {
+        queue.push(current.left);
+      }
+      if (current.right) {
+        queue.push(current.right);
       }
     }
     return this;
@@ -27,7 +52,8 @@ export default class TreeNode {
       .reduce(
         (prev, current) => prev.insert(current),
         rootNode
-      );
+      )
+      ._removeNullNode();
   }
 
   bfs() {
@@ -78,4 +104,7 @@ if (require.main === module) {
   console.log(rootNode.bfs());
   console.log(rootNode.inOrder());
   console.log(TreeNode.fromBFS(rootNode.bfs()).bfs());
+  const bfs = [1, null, 3, 4, 5];
+  const rootNode2 = TreeNode.fromBFS(bfs);
+  console.log(rootNode2.bfs(), rootNode2.inOrder());
 }
