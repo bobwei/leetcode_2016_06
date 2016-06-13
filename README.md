@@ -1,6 +1,7 @@
 # Leetcode Practice
 
 - [Installation](#installation)
+- [Notes](./Notes.md)
 
 
 ## Installation
