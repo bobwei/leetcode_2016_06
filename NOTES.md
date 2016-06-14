@@ -1,7 +1,17 @@
 # Leetcode Notes
 
+- [Restore IP Addresses](#restore-ip-addresses) ( date: 2016/06/14 )
 - [Majority Element](#majority-element) ( date: 2016/06/13 )
 - [Binary Tree Post Order Traversal](#binary-tree-post-order-traversal) ( date: 2016/06/12 )
+
+
+#### Restore IP Addresses
+
+###### date: 2016/06/14
+
+- Use three indexes ( i, j, k ) to split the string into four ip numbers
+- Validate each sliced number
+- Add break out condition to skip out impossible combinations
 
 
 #### Majority Element
