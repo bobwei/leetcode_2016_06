@@ -1,8 +1,16 @@
 # Leetcode Notes
 
+- [Intersection of Two Arrays](#intersection-of-two-arrays) ( date: 2016/06/15 )
 - [Restore IP Addresses](#restore-ip-addresses) ( date: 2016/06/14 )
 - [Majority Element](#majority-element) ( date: 2016/06/13 )
 - [Binary Tree Post Order Traversal](#binary-tree-post-order-traversal) ( date: 2016/06/12 )
+
+
+#### Intersection of Two Arrays
+
+###### date: 2016/06/15
+
+- Use hash
 
 
 #### Restore IP Addresses
