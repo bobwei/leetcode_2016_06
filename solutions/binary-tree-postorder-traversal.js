@@ -1,4 +1,4 @@
-import TreeNode from '../bt';
+import { TreeNode } from 'the-tree-node';
 
 const postorderTraversal = function (rootNode) {
   if (!rootNode) {
